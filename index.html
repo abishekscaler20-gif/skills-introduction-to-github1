@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f6fb">
+    <link rel="icon" href="data:,">
+    <title>Sign in | Lumen</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #20243a;
+        background: #f5f6fb;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 32px 20px;
+        background:
+          radial-gradient(ellipse at 12% 12%, rgb(223 226 255 / 70%), transparent 34%),
+          radial-gradient(ellipse at 90% 90%, rgb(232 222 255 / 65%), transparent 32%),
+          #f5f6fb;
+      }
+
+      .login-card {
+        width: min(100%, 440px);
+        padding: 44px 48px 36px;
+        border: 1px solid rgb(255 255 255 / 85%);
+        border-radius: 24px;
+        background: rgb(255 255 255 / 92%);
+        box-shadow: 0 24px 70px rgb(40 43 82 / 12%), 0 2px 8px rgb(40 43 82 / 4%);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 36px;
+        color: #272a44;
+        font-size: 19px;
+        font-weight: 750;
+        letter-spacing: -0.5px;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 11px;
+        background: linear-gradient(145deg, #7664ed, #a18cf4);
+        color: #fff;
+        font-size: 19px;
+        box-shadow: 0 5px 12px rgb(118 100 237 / 28%);
+      }
+
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: clamp(26px, 5vw, 30px);
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+
+      .intro {
+        margin: 10px 0 30px;
+        color: #777b91;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .field {
+        margin-bottom: 19px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #363a52;
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      input {
+        width: 100%;
+        height: 49px;
+        padding: 0 14px;
+        border: 1px solid #e3e5ee;
+        border-radius: 10px;
+        outline: none;
+        background: #fff;
+        color: #252941;
+        font: inherit;
+        font-size: 14px;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
+      }
+
+      input::placeholder {
+        color: #a4a7b6;
+      }
+
+      input:focus {
+        border-color: #8878ed;
+        box-shadow: 0 0 0 3px rgb(136 120 237 / 15%);
+      }
+
+      .password-wrap {
+        position: relative;
+      }
+
+      .password-wrap input {
+        padding-right: 68px;
+      }
+
+      .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        padding: 5px 3px;
+        border: 0;
+        background: transparent;
+        color: #777b91;
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .toggle-password:hover {
+        color: #6554d8;
+      }
+
+      .form-options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 3px 0 24px;
+        font-size: 12px;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        color: #686c82;
+        font-weight: 500;
+      }
+
+      .remember input {
+        width: 15px;
+        height: 15px;
+        margin: 0;
+        accent-color: #7664ed;
+      }
+
+      a {
+        color: #6858dc;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .submit-button {
+        width: 100%;
+        height: 49px;
+        border: 0;
+        border-radius: 10px;
+        background: linear-gradient(100deg, #7060e6, #8875ef);
+        box-shadow: 0 7px 16px rgb(112 96 230 / 24%);
+        color: #fff;
+        cursor: pointer;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        transition: transform 150ms ease, box-shadow 150ms ease;
+      }
+
+      .submit-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 9px 20px rgb(112 96 230 / 32%);
+      }
+
+      .submit-button:focus-visible,
+      .toggle-password:focus-visible,
+      a:focus-visible {
+        outline: 3px solid rgb(118 100 237 / 35%);
+        outline-offset: 3px;
+      }
+
+      .status {
+        min-height: 20px;
+        margin: 14px 0 0;
+        color: #6858dc;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .signup {
+        margin: 24px 0 0;
+        color: #777b91;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      @media (max-width: 480px) {
+        .login-card {
+          padding: 36px 26px 30px;
+          border-radius: 20px;
+        }
+
+        .brand {
+          margin-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="login-card">
+      <div class="brand" aria-label="Lumen">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Lumen</span>
+      </div>
+      <h1>Welcome back</h1>
+      <p class="intro">Sign in to your account to continue.</p>
+
+      <form id="login-form">
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="username" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+            <button class="toggle-password" id="toggle-password" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+        </div>
+        <div class="form-options">
+          <label class="remember" for="remember">
+            <input id="remember" name="remember" type="checkbox">
+            Remember me
+          </label>
+          <a href="#forgot-password" id="forgot-password">Forgot password?</a>
+        </div>
+        <button class="submit-button" type="submit">Sign in</button>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="signup">New to Lumen? <a href="#create-account" id="create-account">Create an account</a></p>
+    </main>
+
+    <script>
+      const password = document.querySelector("#password");
+      const togglePassword = document.querySelector("#toggle-password");
+      const status = document.querySelector("#status");
+
+      togglePassword.addEventListener("click", () => {
+        const isVisible = password.type === "text";
+        password.type = isVisible ? "password" : "text";
+        togglePassword.textContent = isVisible ? "Show" : "Hide";
+        togglePassword.setAttribute("aria-label", isVisible ? "Show password" : "Hide password");
+        togglePassword.setAttribute("aria-pressed", String(!isVisible));
+      });
+
+      document.querySelector("#login-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        status.textContent = "This demo sign-in form isn't connected to an account service.";
+      });
+
+      document.querySelector("#forgot-password").addEventListener("click", (event) => {
+        event.preventDefault();
+        status.textContent = "Password recovery isn't available in this demo.";
+      });
+
+      document.querySelector("#create-account").addEventListener("click", (event) => {
+        event.preventDefault();
+        status.textContent = "Account creation isn't available in this demo.";
+      });
+    </script>
+  </body>
+</html>
